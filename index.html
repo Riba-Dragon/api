@@ -40,7 +40,9 @@
 
     <img id="vk_avatar" />
 
+    
     <div id="wall_text"></div>
+
     <script type="text/javascript">
         
         var vk_user_id = 1;
@@ -59,10 +61,10 @@
                 }
             });
         });
-                 $("#get_photo").click(function () {
-            VK.api("users.get", { user_ids: [vk_user_id], fields: "photo_200" }, function (data) {
+        $("#get_photo").click(function () {
+            VK.api("wall.get", { owner_id: vk_user_id, count: 1 }, function (data) {
                 console.log(data);
-                $("#vk_avatar").attr("src", data.response[0].photo_200);
+                $("#wall_text").html(data.response[1].text);
             });
         });
     </script>
