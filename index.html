@@ -41,9 +41,10 @@
     <img id="vk_avatar" />
 
     
-    <div id="wall_text"></div>
-     <div id="wall_text1"></div>
-     <div id="wall_text12"></div>
+    <div id="wall_text1"></div>
+     <div id="wall_text2"></div>
+     <div id="wall_text3"></div>
+     
 
     <script type="text/javascript">
         
@@ -64,11 +65,12 @@
             });
         });
         $("#get_photo").click(function () {
-            VK.api("wall.get", { owner_id: vk_user_id, count: 5 }, function (data) {
+            VK.api("wall.get", { owner_id: 1, count: 10 }, function (data) {
                 console.log(data);
-                $("#wall_text").html(data.response[1].text);
-                $("#wall_text1").html(data.response[4].text);
-                $("#wall_text12").html(data.response[5].text);
+                for(var j = 1; j<= 224; j++){
+                $("#wall_text1").html(data.response[1].text);
+               
+                
             });
         });
     </script>
