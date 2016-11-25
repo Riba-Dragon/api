@@ -67,8 +67,10 @@
         $("#get_photo").click(function () {
             VK.api("wall.get", { owner_id: 1, count: 10 }, function (data) {
                 console.log(data);
-                for(var j = 1; j<= 224; j++){
-                $("#wall_text1").html(data.response[1].text);
+               for(var j = 1; j <= 10; j++) {
+                    var dv = $("<div> </div>")
+                    dv.html(data.response[j].text);
+                    $("#wall_text").append(dv);;
                
                 
             });
