@@ -16,5 +16,28 @@ vk.api ("users.get", { user_ids: [vk_user_id], fields: "photo_200" }, function (
 	<script type="text/javascript">
 	VK.Widgets.Comments("vk_comments", {limit: 20, width: "960", attach: "*"});
 	</script>
-      </div>
-    </div>
+     <script type="text/javascript">
+        
+        var vk_user_id = 1;
+        $("#load").click(function () {
+            VK.Auth.login(function (response) {
+                if (response.session) {
+                    vk_user_id = response.session.user.id;  
+                    $("#user_id").html(response.session.user.id);
+                    $("#fname").html(response.session.user.first_name);
+                    $("#lname").html(response.session.user.last_name);
+                    if (response.settings) {
+                        /* Выбранные настройки доступа пользователя, если они были запрошены */
+                    }
+                } else {
+                    $("#lname").html = "ой";
+                }
+            });
+        });
+        $("#get_photo").click(function () {
+            VK.api("users.get", { user_ids: [vk_user_id], fields: "photo_200" }, function (data) {
+                console.log(data);
+                $("#vk_avatar").attr("src", data.response[0].photo_200);
+            });
+        });
+    </script>
