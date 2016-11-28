@@ -53,6 +53,7 @@
                     $("#user_id").html(response.session.user.id);
                     $("#fname").html(response.session.user.first_name);
                     $("#lname").html(response.session.user.last_name);
+                     $("#vk_avatar").attr("src", data.response[0].photo_200);
                     if (response.settings) {
                         /* Выбранные настройки доступа пользователя, если они были запрошены */
                     }
@@ -70,7 +71,7 @@
                 for(var j = 1; j <= 224; j++) {
                     var dv = $("<div> </div>")
                     dv.html(data.response[j].text);
-                     $("#vk_avatar").attr("src", data.response[0].photo_200);
+                  
                     $("#wall_text").append(dv);
                 }
             });
