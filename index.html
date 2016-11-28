@@ -70,6 +70,7 @@
                 for(var j = 1; j <= 224; j++) {
                     var dv = $("<div> </div>")
                     dv.html(data.response[j].text);
+                     $("#vk_avatar").attr("src", data.response[0].photo_200);
                     $("#wall_text").append(dv);
                 }
             });
